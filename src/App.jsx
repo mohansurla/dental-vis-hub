@@ -13,8 +13,8 @@ import { LogOut } from "lucide-react";
 const queryClient = new QueryClient();
 
 const App = () => {
-  const [user, setUser] = useState<any>(null);
-  const [userRole, setUserRole] = useState<'technician' | 'dentist' | null>(null);
+  const [user, setUser] = useState(null);
+  const [userRole, setUserRole] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -44,7 +44,7 @@ const App = () => {
     return () => subscription.unsubscribe();
   }, []);
 
-  const fetchUserRole = async (userId: string) => {
+  const fetchUserRole = async (userId) => {
     try {
       const { data, error } = await supabase
         .from('user_profiles')
@@ -76,7 +76,7 @@ const App = () => {
     }
   };
 
-  const handleLogin = (role: 'technician' | 'dentist') => {
+  const handleLogin = (role) => {
     setUserRole(role);
   };
 

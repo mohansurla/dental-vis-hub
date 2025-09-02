@@ -8,17 +8,13 @@ import { supabase } from '@/lib/supabase';
 import { Stethoscope, Shield, Upload } from 'lucide-react';
 import healthcareHero from '@/assets/healthcare-hero.jpg';
 
-interface LoginPageProps {
-  onLogin: (role: 'technician' | 'dentist') => void;
-}
-
-export const LoginPage = ({ onLogin }: LoginPageProps) => {
+export const LoginPage = ({ onLogin }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const { toast } = useToast();
 
-  const handleLogin = async (e: React.FormEvent) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
 
@@ -55,7 +51,7 @@ export const LoginPage = ({ onLogin }: LoginPageProps) => {
         title: "Login successful",
         description: "Welcome to OralVis Healthcare",
       });
-    } catch (error: any) {
+    } catch (error) {
       toast({
         title: "Login failed",
         description: error.message,
